@@ -51,7 +51,6 @@ jobs:
         ./gradlew server:dist -Pbuildversion=${RELEASE_VERSION} -PshowCommitHash --stacktrace    
         echo "JDK directory: $JDK_DIR"
         echo $PWD
-        ls deploy/
     - name: Upload server artifacts
       uses: svenstaro/upload-release-action@v2
       with:
