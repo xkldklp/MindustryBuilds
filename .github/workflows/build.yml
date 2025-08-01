@@ -48,8 +48,7 @@ jobs:
         sed -i 's/applicationId "io.anuke.mindustry"/applicationId "io.anuke.mindustry.be"/g' android/build.gradle
         sed -i 's/"io.anuke.mindustry"/"io.anuke.mindustry.be"/g' android/AndroidManifest.xml
         sed -i 's/Mindustry/Mindustry BE/g' android/res/values/strings.xml
-        ./gradlew server:dist -Pbuildversion=${RELEASE_VERSION} -PversionType=bleeding-edge -PshowCommitHash --stacktrace    
-        mv server/build/libs/server-release.jar server/build/libs/Mindustry-BE-Server-${RELEASE_VERSION}.jar
+        ./gradlew server:dist -Pbuildversion=${RELEASE_VERSION} -PshowCommitHash --stacktrace    
         echo "JDK directory: $JDK_DIR"
         echo $PWD
         ls deploy/
@@ -57,6 +56,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: Mindustry/server/build/libs/Mindustry-BE-Server-${{ env.RELEASE_VERSION }}.jar
+        file: Mindustry/server/build/libs/server-release.jar
         tag: ${{ github.ref }}
   
